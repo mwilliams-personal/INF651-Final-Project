@@ -45,15 +45,15 @@ function drawWeather( d )
 	document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
     document.getElementById('location').innerHTML = d.name;
     
-    if( description.indexOf('rain') > 0 ) 
+    if(d.weather[0].description.indexOf('rain') > 0 ) 
     {
         document.body.className = 'rainy';
     } 
-    else if( description.indexOf('cloud') > 0 ) 
+    else if(d.weather[0].description.indexOf('cloud') > 0 ) 
     {
         document.body.className = 'cloudy';
     } 
-    else if( description.indexOf('sunny') > 0 ) 
+    else if(d.weather[0].description.indexOf('sunny') > 0 ) 
     {
         document.body.className = 'sunny';
     }
