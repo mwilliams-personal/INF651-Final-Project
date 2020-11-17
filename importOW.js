@@ -11,7 +11,7 @@ const city = document.getElementById("cityName");
 const state = document.getElementById("stateCode");
 const zip = document.getElementById("zipCode");
 
-function ImportTest()
+async function ImportTest()
 {
     console.log("eyyy, it works!");
     // Just City Name call
@@ -19,16 +19,11 @@ function ImportTest()
     
     console.log(formatAPIURL());
 
-    fetch(formatAPIURL())
-        .then(function(resp) { return resp.json() }) // Convert data to json
-        .then(function(data) 
-        { 
-            console.log(data); 
-            drawWeather(data);
-        })
-        .catch(function() {  });
+    const response = await fetch(formatAPIURL());
+    const theData = await response.json();
 
-        
+    console.log(theData);
+    drawWeather(theData);
 }
 
 function formatAPIURL()
