@@ -13,6 +13,7 @@ document.getElementById("ImportWeather").onclick = function()
     if(fetUrl != "false")
     {
         ImportTest(fetUrl);
+        console.log(fetUrl);
     }
 }
 
@@ -52,11 +53,16 @@ function formatAPIURL(city, state, zip)
 
 function drawWeather( weatherData ) 
 {
-	var celcius = Math.round(parseFloat(weatherData.main.temp)-273.15);
-	var fahrenheit = Math.round(((parseFloat(weatherData.main.temp)-273.15)*1.8)+32); 
+    var fahrenheit = Math.round(((parseFloat(weatherData.main.temp)-273.15)*1.8)+32); 
+    var lowfar = Math.round(((parseFloat(weatherData.main.temp_min)-273.15)*1.8)+32); 
+    var maxfar = Math.round(((parseFloat(weatherData.main.temp_max)-273.15)*1.8)+32); 
 	
 	document.getElementById('description').innerHTML = weatherData.weather[0].description;
-	document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
+    document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
+    document.getElementById('humidity').innerHTML = weatherData.main.humidity + "%";
+    document.getElementById('mintemp').innerHTML = "Low: " + lowfar + '&deg;';
+    document.getElementById('maxtemp').innerHTML = "High: " + maxfar + '&deg;';
+    document.getElementById('windspeed').innerHTML = weatherData.wind.speed + " mph";
     document.getElementById('location').innerHTML = weatherData.name;
     
     if(weatherData.weather[0].description.indexOf('rain') > 0 ) 
