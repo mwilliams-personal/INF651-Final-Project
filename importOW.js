@@ -2,33 +2,52 @@ import WEATHER_API_KEY from "./apikey.js";
 
 console.log(WEATHER_API_KEY);
 
-document.getElementById("ImportWeather").onclick = function(){
-    ImportTest();
+document.getElementById("ImportWeather").onclick = function()
+{
+    const city = document.getElementById("cityName").value;
+    const state = document.getElementById("stateCode").value;
+    const zip = document.getElementById("zipCode").value;
+    
+    const fetUrl = formatAPIURL(city, state, zip);
+        
+    if(fetUrl != "false")
+    {
+        ImportTest(fetUrl);
+    }
 }
 
-//Pull value from this via .value
-const city = document.getElementById("cityName");
-const state = document.getElementById("stateCode");
-const zip = document.getElementById("zipCode");
-
-async function ImportTest()
+async function ImportTest(URL)
 {
     console.log("eyyy, it works!");
-    // Just City Name call
-    // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
     
-    console.log(formatAPIURL());
-
-    const response = await fetch(formatAPIURL());
+    const response = await fetch(URL);
     const theData = await response.json();
 
-    console.log(theData);
     drawWeather(theData);
 }
 
-function formatAPIURL()
+function formatAPIURL(city, state, zip)
 {
-    return "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&appid=" + WEATHER_API_KEY;
+    console.log(city);
+    console.log(state);
+    console.log(zip);
+
+    if(city != "" && state != "")
+    {
+        return "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + ",us&appid=" + WEATHER_API_KEY;
+    }
+    else if(city != "")
+    {
+        return "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",us&appid=" + WEATHER_API_KEY;
+    }
+    else if(zip != "")
+    {
+        return "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&appid=" + WEATHER_API_KEY;
+    }
+    else 
+    {
+        return "false";
+    }
 }
 
 function drawWeather( weatherData ) 
