@@ -31,24 +31,24 @@ function formatAPIURL()
     return "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&appid=" + WEATHER_API_KEY;
 }
 
-function drawWeather( d ) 
+function drawWeather( weatherData ) 
 {
-	var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-	var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32); 
+	var celcius = Math.round(parseFloat(weatherData.main.temp)-273.15);
+	var fahrenheit = Math.round(((parseFloat(weatherData.main.temp)-273.15)*1.8)+32); 
 	
-	document.getElementById('description').innerHTML = d.weather[0].description;
+	document.getElementById('description').innerHTML = weatherData.weather[0].description;
 	document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
-    document.getElementById('location').innerHTML = d.name;
+    document.getElementById('location').innerHTML = weatherData.name;
     
-    if(d.weather[0].description.indexOf('rain') > 0 ) 
+    if(weatherData.weather[0].description.indexOf('rain') > 0 ) 
     {
         document.body.className = 'rainy';
     } 
-    else if(d.weather[0].description.indexOf('cloud') > 0 ) 
+    else if(weatherData.weather[0].description.indexOf('cloud') > 0 ) 
     {
         document.body.className = 'cloudy';
     } 
-    else if(d.weather[0].description.indexOf('sunny') > 0 ) 
+    else if(weatherData.weather[0].description.indexOf('sunny') > 0 ) 
     {
         document.body.className = 'sunny';
     }
