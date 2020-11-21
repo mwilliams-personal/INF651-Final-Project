@@ -9,29 +9,52 @@
     <link rel="stylesheet" href="./css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900">
 <body>
-    <p>WHAT IS THE WEATHER!?</p>
+    
     <br><br>
-    <label for="cityName">City:</label>
-    <input type="text" id="cityName" name="cityName">
-    <label for="stateCode">State:</label>
-    <input type="text" id="stateCode" name="stateCode">
-    <label for="zipCode">Zip Code:</label>
-    <input type="text" id="zipCode" name="zipCode">
-    <button type="ImportWeather" id="ImportWeather">What is my weather forecast?</button>
-
-    <br><br>
-
-    <div id="weather">
-        <h2 id="description"></h2>
-        <h2 id="temp"></h2>
-        <h2 id="humidity"></h2>
-        <h2 id="mintemp"></h2>
-        <h2 id="maxtemp"></h2>
-        <h2 id="windspeed"></h2>
-        <h2 id="location"></h2>
+    <div id="weather" class="center">
+        <h2>WHAT IS THE WEATHER!?</h2>
+        <section id="current-weather">
+            <label for="Search">City:</label>
+            <input type="text" id="cityName" name="cityName">
+            <label for="stateCode">State:</label>
+            <input type="text" id="stateCode" name="stateCode">
+            <br></br>
+            <label for="zipCode">Zip Code:</label>
+            <input type="text" id="zipCode" name="zipCode">
+            <br></br>
+            <button type="ImportWeather" id="ImportWeather">What is my weather forecast?</button>
+        
+            <h2 id="location"></h2>
+            <div id="current-image"></div>
+            <h2 id="temp"></h2>
+            <h2 id="mintemp"></h2>
+            <h2 id="maxtemp"></h2>
+            <h2 id="humidity"></h2>
+            <h2 id="windspeed"></h2>
+        </section>
+        <hr>
+        <section id="five-day-forecast">
+            <h2 id="five-day-forecast-heading" class="label-font" tabindex="0">5-day forecast</h2>
+            <div id="five-day-container">
+                <div id="div-5day-1" class="five-day-iconAndText">
+                    <div id="img-5day-1" tabindex="0"></div>
+                </div>
+                <div id="div-5day-2" class="five-day-iconAndText">
+                    <div id="img-5day-2" tabindex="0"></div>
+                </div>
+                <div id="div-5day-3" class="five-day-iconAndText">
+                    <div id="img-5day-3" tabindex="0"></div>
+                </div>
+                <div id="div-5day-4" class="five-day-iconAndText">
+                    <div id="img-5day-4" tabindex="0"></div>
+                </div>
+                <div id="div-5day-5" class="five-day-iconAndText">
+                    <div id="img-5day-5" tabindex="0"></div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <script type="module" src="apikey.js"></script>
     <script src="main_format.js"></script>
     <script type="module" src="importOW.js"></script>
 </body>

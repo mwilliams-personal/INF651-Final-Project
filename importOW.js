@@ -1,6 +1,4 @@
-import WEATHER_API_KEY from "./apikey.js";
-
-console.log(WEATHER_API_KEY);
+const WEATHER_API_KEY = "7ea5590e4a6f42e2125ce4350764445b";
 
 document.getElementById("ImportWeather").onclick = function()
 {
@@ -12,27 +10,21 @@ document.getElementById("ImportWeather").onclick = function()
         
     if(fetUrl != "false")
     {
-        ImportTest(fetUrl);
         console.log(fetUrl);
+        ImportTest(fetUrl);
     }
 }
 
 async function ImportTest(URL)
 {
-    console.log("eyyy, it works!");
-    
     const response = await fetch(URL);
     const theData = await response.json();
 
-    drawWeather(theData);
+    drawCurrentWeather(theData);
 }
 
 function formatAPIURL(city, state, zip)
 {
-    console.log(city);
-    console.log(state);
-    console.log(zip);
-
     if(city != "" && state != "")
     {
         return "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + ",us&appid=" + WEATHER_API_KEY;
@@ -51,30 +43,32 @@ function formatAPIURL(city, state, zip)
     }
 }
 
-function drawWeather( weatherData ) 
+function drawCurrentWeather(weatherData) 
 {
+    document.getElementById('current-image').innerHTML = "";
+    const newImage = document.createElement('img');
+    //create img src url
+    const iconSource = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png";
+    //set img attributes
+    newImage.setAttribute('alt', weatherData.weather.description); 
+    newImage.setAttribute('src', iconSource);
+    newImage.setAttribute('style', "width: 10vh;");
+    //append image to the parent div
+    document.getElementById('current-image').appendChild(newImage);
+
     var fahrenheit = Math.round(((parseFloat(weatherData.main.temp)-273.15)*1.8)+32); 
     var lowfar = Math.round(((parseFloat(weatherData.main.temp_min)-273.15)*1.8)+32); 
     var maxfar = Math.round(((parseFloat(weatherData.main.temp_max)-273.15)*1.8)+32); 
-	
-	document.getElementById('description').innerHTML = weatherData.weather[0].description;
-    document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
-    document.getElementById('humidity').innerHTML = weatherData.main.humidity + "%";
+
+    document.getElementById('temp').innerHTML = "Current: " + fahrenheit + '&deg;';
+    document.getElementById('humidity').innerHTML = "Humidity: " + weatherData.main.humidity + "%";
     document.getElementById('mintemp').innerHTML = "Low: " + lowfar + '&deg;';
     document.getElementById('maxtemp').innerHTML = "High: " + maxfar + '&deg;';
-    document.getElementById('windspeed').innerHTML = weatherData.wind.speed + " mph";
-    document.getElementById('location').innerHTML = weatherData.name;
+    document.getElementById('windspeed').innerHTML = "Wind speed: " + weatherData.wind.speed + " mph";
+    document.getElementById('location').innerHTML = "Location: " + weatherData.name;
+}
+
+drawFiveDayWeather(weatherData)
+{
     
-    if(weatherData.weather[0].description.indexOf('rain') > 0 ) 
-    {
-        document.body.className = 'rainy';
-    } 
-    else if(weatherData.weather[0].description.indexOf('cloud') > 0 ) 
-    {
-        document.body.className = 'cloudy';
-    } 
-    else if(weatherData.weather[0].description.indexOf('sunny') > 0 ) 
-    {
-        document.body.className = 'sunny';
-    }
 }
