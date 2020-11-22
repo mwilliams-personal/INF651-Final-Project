@@ -22,6 +22,11 @@ h2 {
     font-size: large;
 }
 
+h3 {
+    text-align: center;
+    font-size: medium;
+}
+
 #weather {
     border: medium;
     border-color: black;
@@ -55,6 +60,6 @@ hr {
     align-content: center;
 }
 
-.five-day-iconAndText {
-
+.five-day-iconAndText{
+    
 }
