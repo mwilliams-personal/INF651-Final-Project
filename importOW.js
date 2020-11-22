@@ -83,15 +83,6 @@ function drawCurrentWeather(weatherData)
 
 function drawFiveDayWeather(weatherData)
 {
-    /*<div id="div-ext-1" class="five-day-iconAndText">
-                    <div id="ext-1-img"></div>
-                    <h3 id="ext-1-low"></h3>
-                    <h3 id="ext-1-high"></h3>
-                    <h3 id="ext-1-day"></h3>
-                </div>*/
-
-    //
-
     //Day 1
     document.getElementById('ext-1-img').innerHTML = "";
     document.getElementById('ext-1-img').appendChild(setImageExt(0, weatherData));
