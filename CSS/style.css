@@ -49,6 +49,11 @@ hr {
     text-align: center;
 }
 
+#search-boxes
+{
+    text-align: center;
+}
+
 .center {
     margin: 0;
     position: absolute;

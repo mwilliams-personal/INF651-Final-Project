@@ -11,7 +11,7 @@
 <body>
     <br clear="all">
     <flexbox id="weather" class="center">
-        <section id="current-weather" >
+        <section id="search-boxes" >
             <input type="text" id="cityName" name="cityName" autocomplete="off" placeholder="City Name" class="search">
             <input type="text" id="stateCode" name="stateCode" autocomplete="off" placeholder="State code, ex (NC)" class="search">
             <input type="text" id="zipCode" name="zipCode" autocomplete="off" placeholder="Zip Code" class="search">
@@ -20,8 +20,9 @@
             
         </section>
         <hr class="visibility">
-        <section class="visibility">
+        <section id="current-weather" class="visibility">
             <table>
+                <button type="DefaultSave" id="DefaultSave" class="button">Save as default location</button>
                 <h2 id="location"></h2>
                 <div id="current-image" class="centerImg"></div>
                 <h2 id="temp"></h2>

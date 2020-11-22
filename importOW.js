@@ -1,5 +1,7 @@
 const WEATHER_API_KEY = "7ea5590e4a6f42e2125ce4350764445b";
 
+defaultLoad();
+
 document.getElementById("ImportWeather").onclick = function()
 {
     const city = document.getElementById("cityName").value;
@@ -12,6 +14,51 @@ document.getElementById("ImportWeather").onclick = function()
     {
         console.log(fetCurrUrl);
         ImportCurrent(fetCurrUrl);
+    }
+}
+
+document.getElementById("DefaultSave").onclick = function()
+{
+    myStorage = window.localStorage;
+    console.log(localStorage.getItem(URL));
+
+    if(document.getElementById('DefaultSave').innerHTML === "Save as default location")
+    {
+        //Need to save the default location
+        const city = document.getElementById("cityName").value;
+        const state = document.getElementById("stateCode").value;
+        const zip = document.getElementById("zipCode").value;
+        
+        const fetCurrUrl = formatCurrAPIURL(city, state, zip);
+
+        //Now save the fetCurrUrl as local data
+        localStorage.setItem(URL, fetCurrUrl);
+        console.log(localStorage.getItem(URL));
+        document.getElementById('DefaultSave').innerHTML = "Clear default location";
+    }
+    else
+    {
+        localStorage.clear();
+        document.getElementById('DefaultSave').innerHTML = "Save as default location";
+    }
+}
+
+function defaultLoad()
+{
+    //Pull out the default location on page load and make the call if one is set
+    //Load the local data saved by the Default Save on click
+    myStorage = window.localStorage;
+    const defURL = localStorage.getItem(URL);
+
+    if(defURL != null)
+    {
+        console.log(defURL);
+        ImportCurrent(defURL);
+        document.getElementById('DefaultSave').innerHTML = "Clear default location";
+    }
+    else
+    {
+        document.getElementById('DefaultSave').innerHTML = "Save as default location";
     }
 }
 
@@ -73,8 +120,6 @@ function drawCurrentWeather(weatherData)
 
     if(document.getElementById('temp').innerHTML != "")
     {
-        console.log("I got there");
-     
         [].forEach.call(document.querySelectorAll('.visibility'), function (el) {
             el.style.display = 'block';
         });
