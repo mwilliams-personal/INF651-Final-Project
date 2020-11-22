@@ -123,6 +123,7 @@ function drawCurrentWeather(weatherData)
     const iconSource = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png";
     document.getElementById('current-image').innerHTML = "";
     newImage.setAttribute('alt', weatherData.weather.description); 
+    newImage.setAttribute('title', weatherData.weather.description); 
     newImage.setAttribute('src', iconSource);
     newImage.setAttribute('style', "width: 10vh;");
     document.getElementById('current-image').appendChild(newImage);
@@ -144,45 +145,15 @@ function drawCurrentWeather(weatherData)
 
 function drawFiveDayWeather(weatherData)
 {
-    //Day 1
-    document.getElementById('ext-1-img').innerHTML = "";
-    document.getElementById('ext-1-img').appendChild(setImageExt(0, weatherData));
-    document.getElementById('ext-1-low').innerHTML = "Low: " + parseInt(weatherData.daily[0].temp.min) + '&deg;';
-    document.getElementById('ext-1-high').innerHTML = "High: " + parseInt(weatherData.daily[0].temp.max) + '&deg;';
-    document.getElementById('ext-1-day').innerHTML = DayOfTheWeek(1);
-    document.getElementById('ext-1-day').setAttribute('alt', DayOfTheWeekFull(1));
-    
-    //Day 2
-    document.getElementById('ext-2-img').innerHTML = "";
-    document.getElementById('ext-2-img').appendChild(setImageExt(1, weatherData));
-    document.getElementById('ext-2-low').innerHTML = "Low: " + parseInt(weatherData.daily[1].temp.min) + '&deg;';
-    document.getElementById('ext-2-high').innerHTML = "High: " + parseInt(weatherData.daily[1].temp.max) + '&deg;';
-    document.getElementById('ext-2-day').innerHTML = DayOfTheWeek(2);
-    document.getElementById('ext-2-day').setAttribute('alt', DayOfTheWeekFull(2));
-    
-    //Day 3
-    document.getElementById('ext-3-img').innerHTML = "";
-    document.getElementById('ext-3-img').appendChild(setImageExt(2, weatherData));
-    document.getElementById('ext-3-low').innerHTML = "Low: " + parseInt(weatherData.daily[2].temp.min) + '&deg;';
-    document.getElementById('ext-3-high').innerHTML = "High: " + parseInt(weatherData.daily[2].temp.max) + '&deg;';
-    document.getElementById('ext-3-day').innerHTML = DayOfTheWeek(3);
-    document.getElementById('ext-3-day').setAttribute('alt', DayOfTheWeekFull(3));
-    
-    //Day 4
-    document.getElementById('ext-4-img').innerHTML = "";
-    document.getElementById('ext-4-img').appendChild(setImageExt(3, weatherData));
-    document.getElementById('ext-4-low').innerHTML = "Low: " + parseInt(weatherData.daily[3].temp.min) + '&deg;';
-    document.getElementById('ext-4-high').innerHTML = "High: " + parseInt(weatherData.daily[3].temp.max) + '&deg;';
-    document.getElementById('ext-4-day').innerHTML = DayOfTheWeek(4);
-    document.getElementById('ext-4-day').setAttribute('alt', DayOfTheWeekFull(4));
-    
-    //Day 5
-    document.getElementById('ext-5-img').innerHTML = "";
-    document.getElementById('ext-5-img').appendChild(setImageExt(4, weatherData));
-    document.getElementById('ext-5-low').innerHTML = "Low: " + parseInt(weatherData.daily[4].temp.min) + '&deg;';
-    document.getElementById('ext-5-high').innerHTML = "High: " + parseInt(weatherData.daily[4].temp.max) + '&deg;';
-    document.getElementById('ext-5-day').innerHTML = DayOfTheWeek(5);
-    document.getElementById('ext-5-day').setAttribute('alt', DayOfTheWeekFull(5));
+    for(let i = 1; i <= 5; i++)
+    {
+        document.getElementById("ext-"+i+"-img").innerHTML = "";
+        document.getElementById("ext-"+i+"-img").appendChild(setImageExt(i-1, weatherData));
+        document.getElementById("ext-"+i+"-low").innerHTML = "Low: " + parseInt(weatherData.daily[i-1].temp.min) + '&deg;';
+        document.getElementById("ext-"+i+"-high").innerHTML = "High: " + parseInt(weatherData.daily[i-1].temp.max) + '&deg;';
+        document.getElementById("ext-"+i+"-day").innerHTML = DayOfTheWeek(i);
+        document.getElementById("ext-"+i+"-day").setAttribute('alt', DayOfTheWeekFull(i));
+    }
 }
 
 function setImageExt(count, weatherData)
@@ -190,6 +161,7 @@ function setImageExt(count, weatherData)
     const newImage = document.createElement('img');
     const iconSource = "http://openweathermap.org/img/wn/" + weatherData.daily[count].weather[0].icon + "@2x.png";
     newImage.setAttribute('alt', weatherData.daily[count].weather.description); 
+    newImage.setAttribute('title', weatherData.daily[count].weather.description); 
     newImage.setAttribute('src', iconSource);
     newImage.setAttribute('style', "width: 10vh;");
     return newImage;
