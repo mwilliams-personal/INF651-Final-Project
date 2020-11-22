@@ -70,6 +70,15 @@ function drawCurrentWeather(weatherData)
     document.getElementById('maxtemp').innerHTML = "High: " + parseInt(weatherData.main.temp_max) + '&deg;';
     document.getElementById('windspeed').innerHTML = "Wind speed: " + weatherData.wind.speed + " mph";
     document.getElementById('location').innerHTML = "Location: " + weatherData.name;
+
+    if(document.getElementById('temp').innerHTML != "")
+    {
+        console.log("I got there");
+     
+        [].forEach.call(document.querySelectorAll('.visibility'), function (el) {
+            el.style.display = 'block';
+        });
+    }
 }
 
 function drawFiveDayWeather(weatherData)
@@ -89,6 +98,7 @@ function drawFiveDayWeather(weatherData)
     document.getElementById('ext-1-low').innerHTML = "Low: " + parseInt(weatherData.daily[0].temp.min) + '&deg;';
     document.getElementById('ext-1-high').innerHTML = "High: " + parseInt(weatherData.daily[0].temp.max) + '&deg;';
     document.getElementById('ext-1-day').innerHTML = DayOfTheWeek(1);
+    document.getElementById('ext-1-day').setAttribute('alt', DayOfTheWeekFull(1));
     
     //Day 2
     document.getElementById('ext-2-img').innerHTML = "";
@@ -96,6 +106,7 @@ function drawFiveDayWeather(weatherData)
     document.getElementById('ext-2-low').innerHTML = "Low: " + parseInt(weatherData.daily[1].temp.min) + '&deg;';
     document.getElementById('ext-2-high').innerHTML = "High: " + parseInt(weatherData.daily[1].temp.max) + '&deg;';
     document.getElementById('ext-2-day').innerHTML = DayOfTheWeek(2);
+    document.getElementById('ext-2-day').setAttribute('alt', DayOfTheWeekFull(2));
     
     //Day 3
     document.getElementById('ext-3-img').innerHTML = "";
@@ -103,6 +114,7 @@ function drawFiveDayWeather(weatherData)
     document.getElementById('ext-3-low').innerHTML = "Low: " + parseInt(weatherData.daily[2].temp.min) + '&deg;';
     document.getElementById('ext-3-high').innerHTML = "High: " + parseInt(weatherData.daily[2].temp.max) + '&deg;';
     document.getElementById('ext-3-day').innerHTML = DayOfTheWeek(3);
+    document.getElementById('ext-3-day').setAttribute('alt', DayOfTheWeekFull(3));
     
     //Day 4
     document.getElementById('ext-4-img').innerHTML = "";
@@ -110,6 +122,7 @@ function drawFiveDayWeather(weatherData)
     document.getElementById('ext-4-low').innerHTML = "Low: " + parseInt(weatherData.daily[3].temp.min) + '&deg;';
     document.getElementById('ext-4-high').innerHTML = "High: " + parseInt(weatherData.daily[3].temp.max) + '&deg;';
     document.getElementById('ext-4-day').innerHTML = DayOfTheWeek(4);
+    document.getElementById('ext-4-day').setAttribute('alt', DayOfTheWeekFull(4));
     
     //Day 5
     document.getElementById('ext-5-img').innerHTML = "";
@@ -117,6 +130,7 @@ function drawFiveDayWeather(weatherData)
     document.getElementById('ext-5-low').innerHTML = "Low: " + parseInt(weatherData.daily[4].temp.min) + '&deg;';
     document.getElementById('ext-5-high').innerHTML = "High: " + parseInt(weatherData.daily[4].temp.max) + '&deg;';
     document.getElementById('ext-5-day').innerHTML = DayOfTheWeek(5);
+    document.getElementById('ext-5-day').setAttribute('alt', DayOfTheWeekFull(5));
 }
 
 function setImageExt(count, weatherData)
@@ -130,6 +144,21 @@ function setImageExt(count, weatherData)
 }
 
 function DayOfTheWeek(day)
+{
+    var d = new Date();
+    var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    if(d.getDay() + day > 6)
+    {
+        return weekday[(d.getDay() + day) - 6];
+    }
+    else
+    {
+        return weekday[d.getDay() + day];
+    }
+}
+
+function DayOfTheWeekFull(day)
 {
     var d = new Date();
     var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

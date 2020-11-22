@@ -9,33 +9,31 @@
     <link rel="stylesheet" href="./css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900">
 <body>
-    
-    <br><br>
-    <div id="weather" class="center">
-        <h2>WHAT IS THE WEATHER!?</h2>
-        <section id="current-weather">
-            <label for="Search">City:</label>
+    <br clear="all">
+    <flexbox id="weather" class="center">
+        <section id="current-weather" >
             <input type="text" id="cityName" name="cityName" autocomplete="off" placeholder="City Name" class="search">
-            <br></br>
-            <label for="stateCode">State:</label>
             <input type="text" id="stateCode" name="stateCode" autocomplete="off" placeholder="State code, ex (NC)" class="search">
-            <br></br>
-            <label for="zipCode">Zip Code:</label>
             <input type="text" id="zipCode" name="zipCode" autocomplete="off" placeholder="Zip Code" class="search">
             <br></br>
             <button type="ImportWeather" id="ImportWeather" class="button">What is my weather forecast?</button>
-        
-            <h2 id="location"></h2>
-            <div id="current-image"></div>
-            <h2 id="temp"></h2>
-            <h2 id="mintemp"></h2>
-            <h2 id="maxtemp"></h2>
-            <h2 id="humidity"></h2>
-            <h2 id="windspeed"></h2>
+            
         </section>
-        <hr>
-        <section id="five-day-forecast">
-            <h2 id="five-day-forecast-heading" class="label-font" tabindex="0">5-day forecast</h2>
+        <hr class="visibility">
+        <section class="visibility">
+            <table>
+                <h2 id="location"></h2>
+                <div id="current-image" class="centerImg"></div>
+                <h2 id="temp"></h2>
+                <h2 id="mintemp"></h2>
+                <h2 id="maxtemp"></h2>
+                <h2 id="humidity"></h2>
+                <h2 id="windspeed"></h2>
+            </table>
+        </section>
+        <hr class="visibility">
+        <section id="five-day-forecast" class="visibility">
+            <h2 id="five-day-forecast-heading" class="label-font" tabindex="0"></h2>
             <table id="extended-container">
                 <div id="div-ext-1" class="five-day-iconAndText">
                     <div id="ext-1-img" class="centerImg"></div>
@@ -69,7 +67,7 @@
                 </div>
             </table>
         </section>
-    </div>
+    </flexbox>
 
     <script src="main_format.js"></script>
     <script type="module" src="importOW.js"></script>
