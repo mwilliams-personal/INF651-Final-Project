@@ -4,6 +4,7 @@ defaultLoad();
 
 document.getElementById("ImportWeather").onclick = function()
 {
+    
     const city = document.getElementById("cityName").value;
     const state = document.getElementById("stateCode").value;
     const zip = document.getElementById("zipCode").value;
@@ -15,6 +16,7 @@ document.getElementById("ImportWeather").onclick = function()
         console.log(fetCurrUrl);
         ImportCurrent(fetCurrUrl);
     }
+    
 }
 
 document.getElementById("DefaultSave").onclick = function()
@@ -64,11 +66,25 @@ function defaultLoad()
 
 async function ImportCurrent(URL)
 {
-    const response = await fetch(URL);
-    const theData = await response.json();
+    try
+    {
+        const response = await fetch(URL);
+        const theData = await response.json();
 
-    drawCurrentWeather(theData);
-    ImportExtended(theData.coord.lat,theData.coord.lon);
+        drawCurrentWeather(theData);
+        ImportExtended(theData.coord.lat,theData.coord.lon);
+
+        [].forEach.call(document.querySelectorAll('.warningVis'), function (el) {
+            el.style.display = 'none';
+        });
+    }
+    catch(error)
+    {
+        console.log("fetch failed");
+        [].forEach.call(document.querySelectorAll('.warningVis'), function (el) {
+            el.style.display = 'block';
+        });
+    }
 }
 
 async function ImportExtended(lat, lon)
@@ -103,9 +119,9 @@ function formatCurrAPIURL(city, state, zip)
 
 function drawCurrentWeather(weatherData) 
 {
-    document.getElementById('current-image').innerHTML = "";
     const newImage = document.createElement('img');
     const iconSource = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png";
+    document.getElementById('current-image').innerHTML = "";
     newImage.setAttribute('alt', weatherData.weather.description); 
     newImage.setAttribute('src', iconSource);
     newImage.setAttribute('style', "width: 10vh;");

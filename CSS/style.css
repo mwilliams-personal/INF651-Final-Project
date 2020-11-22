@@ -7,8 +7,6 @@ body {
     height: 100vh;
     background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 h1 {
@@ -27,6 +25,13 @@ h2 {
 h3 {
     text-align: center;
     font-size: medium;
+}
+
+h4 {
+    text-align: center;
+    font-size: large;
+    color: red;
+    text-shadow: .1em .1em 0 rgba(0,0,0,0.3);
 }
 
 #weather {
@@ -55,12 +60,8 @@ hr {
 }
 
 .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    margin: auto;
+    max-width: 800px;
     height: auto;
 }
 
@@ -73,9 +74,7 @@ hr {
     float: left;
     object-fit: cover;
     display:flex;
-    flex-direction:column
-
-    
+    flex-direction:column;
 }
 
 .five-day-iconAndText img {
@@ -123,5 +122,9 @@ hr {
 
 
 .visibility{
+    display: none;
+}
+
+.warningVis{
     display: none;
 }
