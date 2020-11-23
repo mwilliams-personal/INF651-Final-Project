@@ -22,7 +22,7 @@ h2 {
     font-size: large;
 }
 
-h3 {
+.h3new {
     text-align: center;
     font-size: medium;
 }
@@ -82,9 +82,12 @@ hr {
     height:auto
 }
 
-.five-day-iconAndText h3 {
+.five-day-iconAndText p {
     max-width:100%;
     height:auto;
+    text-align: center;
+    font-size: medium;
+    font-weight: 400;
 }
 
 #extended-container{
