@@ -47,26 +47,23 @@ function LoadBasedOnEntry()
             document.getElementById('DefaultSave').setAttribute('aria-label', "Save " + myStorage.getItem('LOCATIONRECENT') + " as default location");
         }
     }
+    else
+    {
+        [].forEach.call(document.querySelectorAll('.warningVis'), function (el) {
+            el.style.display = 'block';
+        });
+    }
 }
 
 document.getElementById("DefaultSave").onclick = function()
 {
     myStorage = window.localStorage;
-
+    
     if(document.getElementById('DefaultSave').innerHTML === "Save as default location")
     {
-        //Need to save the default location
-        const city = document.getElementById("cityName").value;
-        const state = document.getElementById("stateCode").value;
-        const zip = document.getElementById("zipCode").value;
-        
-        const fetCurrUrl = formatCurrAPIURL(city, state, zip);
-        
-        console.log("test");
-
         //Now save the fetCurrUrl as local data
-        localStorage.setItem(URL, fetCurrUrl);
-        localStorage.setItem('LOCATIONSAVED', city+state+zip);
+        localStorage.setItem(URL, localStorage.getItem('currentSearch'));
+        localStorage.setItem('LOCATIONSAVED', document.getElementById('location').innerHTML);
         document.getElementById('DefaultSave').innerHTML = "Clear default location";
         document.getElementById('DefaultSave').setAttribute('aria-label', "Clear default location, currently set to" + localStorage.getItem('LOCATIONSAVED'));
     }
@@ -74,7 +71,8 @@ document.getElementById("DefaultSave").onclick = function()
     {
         document.getElementById('DefaultSave').innerHTML = "Save as default location";
         document.getElementById('DefaultSave').setAttribute('aria-label', "Save " + myStorage.getItem('LOCATIONRECENT') + " as default location");
-        localStorage.clear();
+        localStorage.setItem(URL, "");
+        localStorage.setItem('LOCATIONSAVED', "");
     }
 }
 
@@ -85,7 +83,7 @@ function defaultLoad()
     myStorage = window.localStorage;
     const defURL = localStorage.getItem(URL);
 
-    if(defURL != null)
+    if(defURL != null && defURL != "")
     {
         ImportCurrent(defURL);
         document.getElementById('DefaultSave').innerHTML = "Clear default location";
@@ -135,14 +133,17 @@ function formatCurrAPIURL(city, state, zip)
     
     if(city != "" && state != "")
     {
+        localStorage.setItem('currentSearch', "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + ",us&units=imperial&appid=" + WEATHER_API_KEY);
         return "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + ",us&units=imperial&appid=" + WEATHER_API_KEY;
     }
     else if(city != "")
     {
+        localStorage.setItem('currentSearch', "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",us&units=imperial&appid=" + WEATHER_API_KEY);
         return "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",us&units=imperial&appid=" + WEATHER_API_KEY;
     }
     else if(zip != "")
     {
+        localStorage.setItem('currentSearch', "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&units=imperial&appid=" + WEATHER_API_KEY);
         return "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&units=imperial&appid=" + WEATHER_API_KEY;
     }
     else 
