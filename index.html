@@ -15,61 +15,63 @@
 <body>
     <br clear="all">
     <flexbox id="weather" class="center">
+        
         <section id="search-boxes" aria-label="Search boxes" tabindex="1">
-            <input type="text" id="cityName" name="cityName" tabindex="1" aria-label="Search Box" autocomplete="off" placeholder="City Name" class="search">
-            <input type="text" id="stateCode" name="stateCode" tabindex="2" aria-label="Search Box" autocomplete="off" placeholder="State code, example (NC)" class="search">
-            <input type="text" id="zipCode" name="zipCode" tabindex="3" aria-label="Search Box" autocomplete="off" placeholder="Zip Code" class="search">
+            <p aria-label="What is the weather forecast?" tabindex ="2">What is the weather forecast?</p>
+            <input type="text" id="cityName" name="cityName" tabindex="3" aria-label="Search Box" autocomplete="off" placeholder="City Name" class="search">
+            <input type="text" id="stateCode" name="stateCode" tabindex="4" aria-label="Search Box" autocomplete="off" placeholder="State code, example (NC)" class="search">
+            <input type="text" id="zipCode" name="zipCode" tabindex="5" aria-label="Search Box" autocomplete="off" placeholder="Zip Code" class="search">
             <br></br>
-            <button type="ImportWeather" id="ImportWeather" tabindex="4" aria-label="Search" class="button">Search</button>
+            <button type="ImportWeather" id="ImportWeather" tabindex="6" aria-label="Search" class="button">Search</button>
         </section>
         <hr class="warningVis">
         <section class="warningVis">
-            <h4 id="warning-message" tabindex="5" aria-label="Warning message, incorrect data entered.">WARNING! Invalid information, please try again.</h4>
+            <h4 id="warning-message" tabindex="7" aria-label="Warning message, incorrect data entered.">WARNING! Invalid information, please try again.</h4>
         </section>
         <hr class="visibility">
         <section id="current-weather" class="visibility" aria-label="Current weather" tabindex="6">
-                <p id="location" aria-label="Location" tabindex="6"></p>
-                <div id="current-image" class="centerImg" tabindex="7"></div>
-                <p id="temp" aria-label="Current temperature" tabindex="8"></p>
-                <p id="mintemp" aria-label="Low temperature" tabindex="9"></p>
-                <p id="maxtemp" aria-label="High temperature" tabindex="10"></p>
-                <p id="humidity" aria-label="Humidity" tabindex="11"></p>
-                <p id="windspeed" aria-label="Wind speed" tabindex="12"></p>
-                <button type="DefaultSave" id="DefaultSave" tabindex="13" class="button"></button>
+                <p id="location" aria-label="Location" tabindex="8"></p>
+                <div id="current-image" class="centerImg" tabindex="9"></div>
+                <p id="temp" aria-label="Current temperature" tabindex="10"></p>
+                <p id="mintemp" aria-label="Low temperature" tabindex="11"></p>
+                <p id="maxtemp" aria-label="High temperature" tabindex="12"></p>
+                <p id="humidity" aria-label="Humidity" tabindex="13"></p>
+                <p id="windspeed" aria-label="Wind speed" tabindex="14"></p>
+                <button type="DefaultSave" id="DefaultSave" tabindex="15" class="button"></button>
         </section>
         <hr class="visibility">
-        <section id="five-day-forecast" class="visibility" aria-label="Five day forecast" tabindex="14">
+        <section id="five-day-forecast" class="visibility" aria-label="Five day forecast" tabindex="16">
             <h2 id="five-day-forecast-heading" class="label-font"></h2>
             <table id="extended-container">
                 <div id="div-ext-1" class="five-day-iconAndText" aria-label="Five day forecast day 1" tabindex="14">
-                    <p id="ext-1-day" tabindex="15"></p>
-                    <div id="ext-1-img" class="centerImg" tabindex="16"></div>
-                    <p id="ext-1-low" tabindex="17"></p>
-                    <p id="ext-1-high" tabindex="18"></p>
+                    <p id="ext-1-day" tabindex="17"></p>
+                    <div id="ext-1-img" class="centerImg" tabindex="18"></div>
+                    <p id="ext-1-low" tabindex="19"></p>
+                    <p id="ext-1-high" tabindex="20"></p>
                 </div>
-                <div id="div-ext-2" class="five-day-iconAndText" aria-label="Five day forecast day 2" tabindex="19">
-                    <p id="ext-2-day" tabindex="20"></p>
-                    <div id="ext-2-img" class="centerImg" tabindex="21"></div>
-                    <p id="ext-2-low" tabindex="22"></p>
-                    <p id="ext-2-high" tabindex="23"></p>
+                <div id="div-ext-2" class="five-day-iconAndText" aria-label="Five day forecast day 2" tabindex="21">
+                    <p id="ext-2-day" tabindex="22"></p>
+                    <div id="ext-2-img" class="centerImg" tabindex="23"></div>
+                    <p id="ext-2-low" tabindex="24"></p>
+                    <p id="ext-2-high" tabindex="25"></p>
                 </div>
-                <div id="div-ext-3" class="five-day-iconAndText" aria-label="Five day forecast day 3" tabindex="24">
-                    <p id="ext-3-day" tabindex="25"></p>
-                    <div id="ext-3-img" class="centerImg" tabindex="26"></div>
-                    <p id="ext-3-low" tabindex="27"></p>
-                    <p id="ext-3-high" tabindex="28"></p>
+                <div id="div-ext-3" class="five-day-iconAndText" aria-label="Five day forecast day 3" tabindex="26">
+                    <p id="ext-3-day" tabindex="27"></p>
+                    <div id="ext-3-img" class="centerImg" tabindex="28"></div>
+                    <p id="ext-3-low" tabindex="29"></p>
+                    <p id="ext-3-high" tabindex="30"></p>
                 </div>
-                <div id="div-ext-4" class="five-day-iconAndText" aria-label="Five day forecast day 4" tabindex="29">
-                    <p id="ext-4-day" tabindex="30"></p>
-                    <div id="ext-4-img" class="centerImg" tabindex="31"></div>
-                    <p id="ext-4-low" tabindex="32"></p>
-                    <p id="ext-4-high" tabindex="33"></p>
+                <div id="div-ext-4" class="five-day-iconAndText" aria-label="Five day forecast day 4" tabindex="31">
+                    <p id="ext-4-day" tabindex="32"></p>
+                    <div id="ext-4-img" class="centerImg" tabindex="33"></div>
+                    <p id="ext-4-low" tabindex="34"></p>
+                    <p id="ext-4-high" tabindex="35"></p>
                 </div>
-                <div id="div-ext-5" class="five-day-iconAndText" aria-label="Five day forecast day 5" tabindex="34">
-                    <p id="ext-5-day" tabindex="35"></p>
-                    <div id="ext-5-img" class="centerImg" tabindex="36"></div>
-                    <p id="ext-5-low" tabindex="37"></p>
-                    <p id="ext-5-high" tabindex="38 "></p>
+                <div id="div-ext-5" class="five-day-iconAndText" aria-label="Five day forecast day 5" tabindex="36">
+                    <p id="ext-5-day" tabindex="37"></p>
+                    <div id="ext-5-img" class="centerImg" tabindex="38"></div>
+                    <p id="ext-5-low" tabindex="39"></p>
+                    <p id="ext-5-high" tabindex="40 "></p>
                 </div>
             </table>
         </section>
