@@ -39,7 +39,7 @@ h4 {
     border-color: black;
     border-radius: 2%;
     border-style: solid;
-    background-color: rgb(145, 138, 122);
+    background-color: rgb(90, 89, 87);
     padding: 25px;
 }
 
@@ -102,7 +102,7 @@ hr {
 .button {
     background-color: #99bbcb;
     border: solid;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
